@@ -19,8 +19,8 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/', 'ControladorWebHome@index');
  
 
-    Route::get('/admin', 'ControladorHome@index');
-    Route::post('/admin/patente/nuevo', 'ControladorPatente@guardar');
+    Route::get('/admin', 'ControladorHome@index');//rutas de tipo URL
+    Route::post('/admin/patente/nuevo', 'ControladorPatente@guardar');// cuando se envia un formulario
 
 /* --------------------------------------------- */
 /* CONTROLADOR LOGIN                           */
