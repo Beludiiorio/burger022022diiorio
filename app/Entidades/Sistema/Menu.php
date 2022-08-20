@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     protected $table = 'sistema_menues';
-    public $timestamps = false;
+    public $timestamps = false; //laravel coloca automaticamente la hora en que se interto o actualizo un registro en la BBDD
 
     protected $fillable = [
         'idmenu', 'nombre', 'id_padre', 'orden', 'activo', 'url', 'css',
