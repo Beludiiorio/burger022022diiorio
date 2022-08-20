@@ -5,20 +5,20 @@ namespace App\Entidades\Sistema;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class Menu extends Model #Todas las entidades que hagamos deben heredar de model
 {
     protected $table = 'sistema_menues';
-    public $timestamps = false; //laravel coloca automaticamente la hora en que se interto o actualizo un registro en la BBDD
+    public $timestamps = false; //Laravel coloca automaticamente la hora en que se interto o actualizo un registro en la BBDD
 
-    protected $fillable = [
+    protected $fillable = [ //Son las distintas columnas
         'idmenu', 'nombre', 'id_padre', 'orden', 'activo', 'url', 'css',
     ];
 
-    protected $hidden = [
+    protected $hidden = [ //ocultas
 
     ];
 
-    public function cargarDesdeRequest($request) {
+    public function cargarDesdeRequest($request) { //Equivale a cargar desde el formulario
         $this->idmenu = $request->input('id') != "0" ? $request->input('id') : $this->idmenu;
         $this->nombre = $request->input('txtNombre');
         $this->id_padre = $request->input('lstMenuPadre');
@@ -108,7 +108,7 @@ class Menu extends Model
                 url,
                 css
                 FROM sistema_menues WHERE idmenu = $idmenu";
-        $lstRetorno = DB::select($sql);
+        $lstRetorno = DB::select($sql); //Devuelve un array de objetos
 
         if (count($lstRetorno) > 0) {
             $this->idmenu = $lstRetorno[0]->idmenu;
@@ -127,7 +127,7 @@ class Menu extends Model
         $sql = "UPDATE sistema_menues SET
             nombre='$this->nombre',
             id_padre='$this->id_padre',
-            orden=$this->orden,
+            orden=$this->orden, #No lleva comilla porque sera un numero
             activo='$this->activo',
             url='$this->url',
             css='$this->css'
@@ -142,17 +142,17 @@ class Menu extends Model
         $affected = DB::delete($sql, [$this->idmenu]);
     }
 
-    public function insertar()
+    public function insertar() //Arma la query dentro de la tabla sistema_menues
     {
-        $sql = "INSERT INTO sistema_menues (
+        $sql = "INSERT INTO sistema_menues ( 
                 nombre,
                 id_padre,
                 orden,
                 activo,
                 url,
                 css
-            ) VALUES (?, ?, ?, ?, ?, ?);";
-        $result = DB::insert($sql, [
+            ) VALUES (?, ?, ?, ?, ?, ?);"; //Se respeta los signos de pregunta por cada campo que tengamos
+        $result = DB::insert($sql, [ //Los datos los busca en el propio objeto
             $this->nombre,
             $this->id_padre,
             $this->orden,
