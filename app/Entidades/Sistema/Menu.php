@@ -127,7 +127,7 @@ class Menu extends Model #Todas las entidades que hagamos deben heredar de model
         $sql = "UPDATE sistema_menues SET
             nombre='$this->nombre',
             id_padre='$this->id_padre',
-            orden=$this->orden, #No lleva comilla porque sera un numero
+            orden=$this->orden, 
             activo='$this->activo',
             url='$this->url',
             css='$this->css'
