@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--Poner doble llave equivale a hacer un echo en php -->
 <html lang="es">
 <head>
   <meta charset="utf-8">
