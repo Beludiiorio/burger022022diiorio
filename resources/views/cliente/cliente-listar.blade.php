@@ -48,4 +48,4 @@ if (isset($msg)) {
 	});
 } );
 </script>
-@endsection
+@endsection 
