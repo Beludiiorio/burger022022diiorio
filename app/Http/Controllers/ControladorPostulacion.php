@@ -75,7 +75,7 @@ class ControladorPostulacion extends Controller
             $row[] = $aPostulaciones[$i]->apellido;
             $row[] = $aPostulaciones[$i]->celular;
             $row[] = $aPostulaciones[$i]->correo;
-            $row[] = "<a href='/files/" . $aPostulaciones[$i]->curriculum . "' class='btn btn-secondary'><i class='fa-solid fa-download'></i></i></a>";
+            $row[] = "<a href='/files" . $aPostulaciones[$i]->curriculum . "' class='btn btn-secondary'><i class='fa-solid fa-download'></i></i></a>";
             $cont++;
             $data[] = $row;
         }
@@ -113,6 +113,16 @@ class ControladorPostulacion extends Controller
                 $msg["MSG"] = "Complete todos los datos";
             } else {
                 if ($_POST["id"] > 0) {
+                    $postulacionAux = new Postulacion();
+                    $postulacionAux->obtenerPorId($entidad->idpostulacion);
+
+                    if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
+                        //Eliminar imagen anterior
+                        @unlink(env('APP_PATH') . "/public/files/$postulacionAux->imagen");                          
+                    } else {
+                        $entidad->curriculum = $postulacionAux->imagen;
+                    }
+
                     //Es actualizacion
                     $entidad->guardar();
 

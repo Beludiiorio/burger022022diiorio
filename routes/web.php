@@ -153,8 +153,6 @@ Route::post('/admin/categoria/{id}', 'ControladorCategoria@guardar');
 
 
 
-
-
 /* --------------------------------------------- */
 /* CONTROLADOR PRODUCTOS                          */
 /* --------------------------------------------- */
