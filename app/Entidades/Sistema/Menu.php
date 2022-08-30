@@ -5,20 +5,20 @@ namespace App\Entidades\Sistema;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model #Todas las entidades que hagamos deben heredar de model
+class Menu extends Model
 {
     protected $table = 'sistema_menues';
-    public $timestamps = false; //Laravel coloca automaticamente la hora en que se interto o actualizo un registro en la BBDD
+    public $timestamps = false;
 
-    protected $fillable = [ //Son las distintas columnas
+    protected $fillable = [
         'idmenu', 'nombre', 'id_padre', 'orden', 'activo', 'url', 'css',
     ];
 
-    protected $hidden = [ //ocultas
+    protected $hidden = [
 
     ];
 
-    public function cargarDesdeRequest($request) { //Equivale a cargar desde el formulario
+    public function cargarDesdeRequest($request) {
         $this->idmenu = $request->input('id') != "0" ? $request->input('id') : $this->idmenu;
         $this->nombre = $request->input('txtNombre');
         $this->id_padre = $request->input('lstMenuPadre');
@@ -108,7 +108,7 @@ class Menu extends Model #Todas las entidades que hagamos deben heredar de model
                 url,
                 css
                 FROM sistema_menues WHERE idmenu = $idmenu";
-        $lstRetorno = DB::select($sql); //Devuelve un array de objetos
+        $lstRetorno = DB::select($sql);
 
         if (count($lstRetorno) > 0) {
             $this->idmenu = $lstRetorno[0]->idmenu;
@@ -126,9 +126,9 @@ class Menu extends Model #Todas las entidades que hagamos deben heredar de model
     public function guardar() {
         $sql = "UPDATE sistema_menues SET
             nombre='$this->nombre',
-            id_padre='$this->id_padre',
-            orden=$this->orden, 
-            activo='$this->activo',
+            id_padre=$this->id_padre,
+            orden=$this->orden,
+            activo=$this->activo,
             url='$this->url',
             css='$this->css'
             WHERE idmenu=?";
@@ -137,28 +137,27 @@ class Menu extends Model #Todas las entidades que hagamos deben heredar de model
 
     public function eliminar()
     {
-        $sql = "DELETE FROM sistema_menues WHERE
-            idmenu=?";
+        $sql = "DELETE FROM sistema_menues WHERE idmenu=?";
         $affected = DB::delete($sql, [$this->idmenu]);
     }
 
-    public function insertar() //Arma la query dentro de la tabla sistema_menues
+    public function insertar()
     {
-        $sql = "INSERT INTO sistema_menues ( 
+        $sql = "INSERT INTO sistema_menues (
                 nombre,
                 id_padre,
                 orden,
                 activo,
                 url,
                 css
-            ) VALUES (?, ?, ?, ?, ?, ?);"; //Se respeta los signos de pregunta por cada campo que tengamos
-        $result = DB::insert($sql, [ //Los datos los busca en el propio objeto
+            ) VALUES (?, ?, ?, ?, ?, ?);";
+        $result = DB::insert($sql, [ 
             $this->nombre,
             $this->id_padre,
             $this->orden,
             $this->activo,
             $this->url,
-            $this->css,
+            $this->css
         ]);
         return $this->idmenu = DB::getPdo()->lastInsertId();
     }
