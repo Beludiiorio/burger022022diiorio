@@ -1,4 +1,4 @@
-<!DOCTYPE html> <!--Poner doble llave equivale a hacer un echo en php -->
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
@@ -99,6 +99,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ Session::get('array_menu')[$i]->url }}">
                   <i class="{{ Session::get('array_menu')[$i]->css }}"></i>
+                  <span>{{ Session::get('array_menu')[$i]->nombre }}</span>
                   <span>{{ Session::get('array_menu')[$i]->nombre }}</span>
                 </a>
               @else
