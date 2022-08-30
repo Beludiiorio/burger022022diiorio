@@ -17,10 +17,37 @@
 Route::group(array('domain' => '127.0.0.1'), function () {
 
     Route::get('/', 'ControladorWebHome@index');
+    Route::get('/takeaway', 'ControladorWebTakeaway@index');
+    Route::post('/takeaway', 'ControladorWebTakeaway@agregarAlCarrito');
+    Route::get('/nosotros', 'ControladorWebNosotros@index');
+    Route::get('/gracias-postulacion', 'ControladorWebGraciasPostulacion@index');
+    Route::post('/nosotros', 'ControladorWebNosotros@enviar');
+    Route::get('/contacto', 'ControladorWebContacto@index');
+    Route::get('/confirmacion-envio', 'ControladorWebConfirmacionEnvio@index');
+    Route::post('/contacto', 'ControladorWebContacto@enviar');
+    Route::get('/mi-cuenta', 'ControladorWebMiCuenta@index');
+    Route::post('/mi-cuenta', 'ControladorWebMiCuenta@editar');
+    Route::get('/login', 'ControladorWebLogin@index');
+    Route::post('/login', 'ControladorWebLogin@ingresar');
+    Route::get('/recuperar-clave', 'ControladorWebRecuperarClave@index');
+    Route::post('/recuperar-clave', 'ControladorWebRecuperarClave@enviar');
+    Route::get('/nuevo-registro', 'ControladorWebNuevoRegistro@index');
+    Route::post('/nuevo-registro', 'ControladorWebNuevoRegistro@enviar');
+    Route::get('/cambiar-clave', 'ControladorWebCambiarClave@index');
+    Route::post('/cambiar-clave', 'ControladorWebCambiarClave@guardar');
+    Route::get('/logout', 'ControladorWebLogout@logout');
+    Route::get('/carrito', 'ControladorWebCarrito@index');
+    Route::post('/carrito', 'ControladorWebCarrito@finalizarPedido');
+    Route::get('/cambiar-datos', 'ControladorWebCambiarDatos@index');
+    Route::post('/cambiar-datos', 'ControladorWebCambiarDatos@editar');
+    Route::get('/mercado-pago/aprobado/{idCliente}', 'ControladorWebMercadoPago@aprobar');
+    Route::get('/mercado-pago/pendiente/{idCliente}', 'ControladorWebMercadoPago@pendiente');
+    Route::get('/mercado-pago/error/{idCliente}', 'ControladorWebMercadoPago@error');
+
  
 
-    Route::get('/admin', 'ControladorHome@index');//rutas de tipo URL
-    Route::post('/admin/patente/nuevo', 'ControladorPatente@guardar');// cuando se envia un formulario
+    Route::get('/admin', 'ControladorHome@index'); //rutas de tipo url
+    Route::post('/admin/patente/nuevo', 'ControladorPatente@guardar'); //Cuando se envia un formulario
 
 /* --------------------------------------------- */
 /* CONTROLADOR LOGIN                           */
@@ -150,6 +177,8 @@ Route::get('/admin/categorias/CargarGrilla', 'ControladorCategoria@cargarGrilla'
 Route::get('/admin/categoria/eliminar', 'ControladorCategoria@eliminar');
 Route::get('/admin/categoria/{id}', 'ControladorCategoria@editar');
 Route::post('/admin/categoria/{id}', 'ControladorCategoria@guardar');
+
+
 
 
 
