@@ -19,7 +19,7 @@ class ControladorWebContacto extends Controller
     }
     public function enviar(Request $request){
         $nombre = $request->input('txtNombre');
-        $celular = $request->input('txtTelefono');
+        $telefono = $request->input('txtTelefono');
         $correo = $request->input('txtCorreo');
         $mensaje = $request->input('txtMensaje');
 

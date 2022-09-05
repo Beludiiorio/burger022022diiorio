@@ -21,10 +21,10 @@ $pg = "contacto"; ?>
                 <input type="text" class="form-control" placeholder="Nombre y Apellido*" name="txtNombre" required />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Numero de telefono*" name="txtTelefono" required />
+                <input type="text" class="form-control" placeholder="Número de teléfono*" name="txtTelefono" required />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Correo electronico*" name="txtCorreo" required />
+                <input type="email" class="form-control" placeholder="Correo electrónico*" name="txtCorreo" required />
               </div>
               <label for="txtMensaje">Mensaje*:</label>
               <textarea name="txtMensaje" id="txtMensaje" cols="38" rows="18" class="form-control" placeholder="Escribe aquí tu mensaje" required></textarea>

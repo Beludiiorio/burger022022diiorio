@@ -107,10 +107,10 @@
                 <input type="text" class="form-control" placeholder="Nombre y Apellido" name="txtNombre"/>
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Numero de Whatsapp" name="txtTelefono" />
+                <input type="text" class="form-control" placeholder="Número de Teléfono" name="txtTelefono" />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Correo electronico" name="txtCorreo" />
+                <input type="email" class="form-control" placeholder="Correo electrónico" name="txtCorreo" />
               </div>
                <div>
                 <label for="TxtFechaNac">Mensaje:</label>

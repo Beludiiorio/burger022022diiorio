@@ -129,7 +129,7 @@
                 <a target="_blank" href="">
                   <i class="fa fa-phone" aria-hidden="true"></i>
                   <span>
-                    Telefono: {{ $sucursal->telefono }}
+                    Teléfono: {{ $sucursal->telefono }}
                   </span>
                 </a>
               </div>
@@ -142,7 +142,7 @@
             &copy; <span id="displayYear"></span> Restaurante de comida rapida
           </p>
           <p> 
-            &copy; <span id="displayYear"></span> Argentina y Colombia
+            &copy; <span id="displayYear"></span> Argentina
           </p>
         </div>
       </div>
