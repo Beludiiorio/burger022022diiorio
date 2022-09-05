@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="web/images/favicon.png" type="">
 
-  <title> Burger </title>
+  <title>La Mansión De La Hamburguesa</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -51,7 +51,7 @@
           <nav class="navbar navbar-expand-lg custom_nav-container ">
             <a class="navbar-brand" href="index.html">
               <span>
-                Burger
+              La Mansión De La Hamburguesa
               </span>
             </a>
 
@@ -139,7 +139,7 @@
         </div>
         <div class="footer-info">
           <p>
-            &copy; <span id="displayYear"></span> Restaurante de comida rapida
+            &copy; <span id="displayYear"></span> Restaurante de comida rápida
           </p>
           <p> 
             &copy; <span id="displayYear"></span> Argentina

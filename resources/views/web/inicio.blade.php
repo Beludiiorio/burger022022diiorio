@@ -10,10 +10,10 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Restaurante 
+                    La comida es mejor cuando comemos juntos 
                     </h1>
                     <p>
-                      Si quieres comer balanceado, no dejes de probar nuestras hamburguesas: proteínas, carbohidrato, grasas y vegetales, en cada bocado.
+                    Tenemos la hamburguesa que se ajusta a tu estilo de vida!
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
@@ -31,10 +31,10 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                        Restaurante 
+                    Porque nos preocupamos por tu gusto... 
                     </h1>
                     <p>
-                      Todo lo que necesitas para ser feliz es comerte una hamburguesa.
+                    Creamos las hamburguesas con los mejores ingredientes
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
@@ -52,10 +52,10 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                       Restaurante 
+                    Venis hambriento? 
                     </h1>
                     <p>
-                      Te esperamos hoy para disfrutar de una deliciosa hamburguesa.
+                     Tenemos la solución para vos!
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
