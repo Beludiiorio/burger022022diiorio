@@ -26,7 +26,7 @@
                 <input id="txtClave" name="txtClave" type="password" class="form-control" placeholder="Password" />
               </div>
               <div class="btn_box">
-                <button type="submit" id="btnIngresar" name="btnIngresar" href="">Ingresar</button>
+                <button type="submit" id="btnIngresar" name="btnIngresar" href="" >Ingresar</button>
               </div>
               <div class="mt-4">
                   <a href="/nuevo-registro">Registrarme</a>
