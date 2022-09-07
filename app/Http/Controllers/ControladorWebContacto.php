@@ -19,7 +19,7 @@ class ControladorWebContacto extends Controller
     }
     public function enviar(Request $request){
         $nombre = $request->input('txtNombre');
-        $telefono = $request->input('txtTelefono');
+        $celular = $request->input('txtTelefono');
         $correo = $request->input('txtCorreo');
         $mensaje = $request->input('txtMensaje');
 
@@ -32,7 +32,6 @@ class ControladorWebContacto extends Controller
         $mail->Password = env('MAIL_PASSWORD');
         $mail->SMTPSecure = env('MAIL_ENCRYPTION');
         $mail->Port = env('MAIL_PORT');
-
         $mail->setFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
         $mail->addAddress(env('MAIL_FROM_ADDRESS'));
         $mail->addReplyTo(env('MAIL_FROM_ADDRESS'));
