@@ -15,14 +15,14 @@
           <div class="detail-box">
             <div class="heading_container">
               <h2>
-                We Are Feane
+                La mansión de la hamburguesa
               </h2>
             </div>
             <p>
-            Feane es una franquicia de restaurantes de comida rápida Argentina con sede en CABA, Argentina.​ Sus principales productos son las hamburguesas, las patatas fritas, los menús para el desayuno y los refrescos.
+            La mansión de la hamburguesa es una franquicia de restaurantes de comida rápida Argentina con sedes en CABA.​ Sus principales productos son las distintas hamburguesas para todos los gustos, las papas fritas con sus distintas versiones y las bebidas.
             </p>
             <a href="">
-              Read More
+              Leer más
             </a>
           </div>
         </div>
@@ -38,7 +38,7 @@
     <div class="container">
       <div class="heading_container heading_center psudo_white_primary mb_45">
         <h2>
-          Qué dicen nuestros clientes
+          Reseñas de nuestros clientes...
         </h2>
       </div>
       <div class="carousel-wrap row ">
@@ -47,19 +47,19 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                Primero que tiene mesitas que dan al parque y lo hacen más atractivo. Segundo está en una zona que la están reciclando y está quedando muy bonito.
-                Tiene sillitas para bebes y jueguitos para los chicos hasta mesitas y sillas.
-                La atención es muy buena y son gente muy amable.
+                El lugar es muy grande, esta bien distribuido, la comida riquísima y por sobre todas las cosas y no menos importante, se nota la limpieza y el cuidado con el que trabajan.
+                
+                
                 </p>
                 <h6>
-                  Moana Michell
+                  Natalia Figueroa
                 </h6>
                 <p>
-                  magna aliqua
+                  Clienta
                 </p>
               </div>
               <div class="img-box">
-                <img src="web/images/client1.jpg" alt="" class="box-img">
+                <img src="web/images/chicareseña.jpg" alt="" class="box-img">
               </div>
             </div>
           </div>
@@ -67,17 +67,53 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                Qué se puede decir que no se haya dicho? Es oootro local de McDonald's que tiene a su favor la zona donde está ubicada: apenas a cuadras de distancia de los bosques de Palermo, lo que le suma un plus muy grande, al menos en mi opinión.
+                El personal muy amable y atento en todo momento, la comida es muy sabrosa, de las mejores hamburguesas que he probado, súper recomdable! Sin dudas es un lugar al que volveré.
                 </p>
                 <h6>
-                  Mike Hamell
+                  Francisco Rodríguez
                 </h6>
                 <p>
-                  magna aliqua
+                  Cliente
                 </p>
               </div>
               <div class="img-box">
-                <img src="web/images/client2.jpg" alt="" class="box-img">
+                <img src="web/images/hombrereseña.jpg" alt="" class="box-img">
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="detail-box">
+                <p>
+                Primera vez que iba, la verdad el lugar es precioso y la comida espectacular, la zona está muy bien ubicada. Tienen sillitas para bebés y jueguitos para los chicos un poco más grandes también.
+                </p>
+                <h6>
+                  Ana María Polo
+                </h6>
+                <p>
+                  Clienta
+                </p>
+              </div>
+              <div class="img-box">
+                <img src="web/images/clienta4.jpg" alt="" class="box-img">
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="box">
+              <div class="detail-box">
+                <p>
+                Bueno, qué decir... el lugar me encantó, algo a destacar son sus pechugitas!! deliciosas y ni hablar de sus papas cargadas. Gracias por su atención!
+                </p>
+                <h6>
+                  Pablo Morales
+                </h6>
+                <p>
+                  Cliente
+                </p>
+              </div>
+              <div class="img-box">
+                <img src="web/images/cliente5.jpg" alt="" class="box-img">
               </div>
             </div>
           </div>

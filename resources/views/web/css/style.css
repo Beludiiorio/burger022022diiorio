@@ -248,7 +248,8 @@ a:focus {
 }
 
 .user_option .order_online:hover {
-  background-color: #e69c00;
+  background-color:#e69c00;
+  
 }
 
 .custom_nav-container .navbar-toggler {
@@ -1007,7 +1008,7 @@ a:focus {
 /*# sourceMappingURL=style.css.map */
 
 
-*{box-sizing:border-box;}
+*{ box-sizing:border-box;}
 
 form{
 	width:300px;

@@ -90,14 +90,14 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
-                <img src="web/images/o1.jpg" alt="">
+                <img src="web/images/salvajee.jpg" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Hamburguesa completa
+                  Hamburguesa Salvaje
                 </h5>
                 <h6>
-                  <span>20%</span> Off
+                  <span>10%</span> Off
                 </h6>
                 <a href="">
                   Nuevo pedido <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
@@ -159,11 +159,11 @@
           <div class="col-md-6  ">
             <div class="box ">
               <div class="img-box">
-                <img src="web/images/o1.jpg" alt="">
+                <img src="web/images/pechuguines.jpg" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Hamburguesa completa
+                  Pechuguines 
                 </h5>
                 <h6>
                   <span>15%</span> Off
