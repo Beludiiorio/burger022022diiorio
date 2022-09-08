@@ -4,6 +4,7 @@
 <section class="book_section layout_padding">
       <div class="container">
             <div class="heading_container">
+                  
                   @if(isset($msg))
                   <div class="alert alert-{{ $msg['estado'] }}" role="alert">
                         {{$msg["msg"]}}
@@ -48,7 +49,7 @@
                                                       </tr>
                                                 </thead>
                                                 <tbody>
-                                                      @foreach($aPedidos as $pedido)
+                                                     @foreach($aPedidos as $pedido)
                                                       <tr>
                                                             <td>{{$pedido->idpedido}}</td>
                                                             <td>{{date_format(date_create($pedido->fecha), "d/m/Y H:i")}}</td>
@@ -57,7 +58,7 @@
                                                             <td>{{$pedido->sucursal}}</td>
                                                             <td>{{$pedido->estado}}</td>
                                                       </tr>
-                                                      @endforeach
+                                                      @endforeach 
                                                 </tbody>
                                           </table>
                                     </div>

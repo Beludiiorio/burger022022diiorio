@@ -22,13 +22,13 @@ class ControladorWebCambiarDatos extends Controller
         return view("web.cambiar-datos", compact('pg', 'aSucursales', 'cliente'));
     }
 
-    public function editar(Request $request)
-    {
+    public function editar(Request $request){
+
+        $cliente = new Cliente();
+        $cliente->obtenerPorId(Session::get('idcliente'));
+       
         $pg = "cambiar-datos";
         
-        $sucursal = new Sucursal();
-        $aSucursales = $sucursal->obtenerTodos();
-
         $nombre = $request->input('txtNombre');
         $apellido = $request->input('txtApellido');
         $correo = $request->input('txtCorreo');
@@ -36,6 +36,9 @@ class ControladorWebCambiarDatos extends Controller
         $celular = $request->input('txtCelular');
         $clave = $request->input('txtClave');
         
+        $sucursal = new Sucursal();
+        $aSucursales = $sucursal->obtenerTodos();
+
         $cliente = new Cliente();
         $cliente->obtenerPorId(Session::get('idcliente'));
 

@@ -57,7 +57,7 @@ class ControladorWebCarrito extends Controller
         $pedido = new Pedido();
         $pedido->fecha = Date("Y-m-d H:i:s");
         $medioDePago =  $request->input('lstMedioDePago');
-
+        
         $carrito_producto = new Carrito_producto();
         $aCarritoProductos = $carrito_producto->obtenerPorCliente(Session::get("idcliente"));
 

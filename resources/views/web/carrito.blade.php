@@ -28,7 +28,7 @@
                                     <?php $total = 0?>
                                     @foreach($aCarrito_productos as $item)
                                      <?php $subtotal = $item->precioproducto * $item->cantidad;?>
-                                    <tr>
+                                    <<tr>
                                           <td><img src="/files/{{ $item->imagenproducto }}" alt="" width="100" height="100" class="rounded img-thumbnail"></td>
                                           <td>{{ $item->nombreproducto}}</td>
                                           <td>${{ number_format($item->precioproducto, 2, ",", ".")}}</td>
