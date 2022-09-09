@@ -47,8 +47,11 @@
                                                             <th>Sucursal</th>
                                                             <th>Estado</th>
                                                       </tr>
+                                                      
                                                 </thead>
+                                                
                                                 <tbody>
+                                                      
                                                      @foreach($aPedidos as $pedido)
                                                       <tr>
                                                             <td>{{$pedido->idpedido}}</td>

@@ -5,7 +5,7 @@
       <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
       <div class="container">
             <div class="heading_container heading_center">
-                  <h2>Mi Carrito</h2>
+                  <h2>Mi Carrito </h2>
             </div>
 
             @if(isset($msg))
@@ -44,23 +44,23 @@
                               <h4>TOTAL: ${{$total}}</h2>
                         </div>
                   </div>
-                  <div class="col-12">
-                        <label for="" class="d-block">Selecciona la sucursal donde retirar el pedido:</label>
+                  <div class="col-12 pb-2">
+                        <label for="" class="d-block">Seleccione la sucursal donde retirar el pedido:</label>
                         <select name="lstSucursal" id="lstSucursal" class="form-control">
                         @foreach($aSucursales as $sucursal)
                               <option value="{{ $sucursal->idsucursal }}">{{ $sucursal->nombre }}</option>
                         @endforeach
                         </select>
                   </div>
-                  <div class="col-12">
-                        <label for="" class="d-block">Selecciona el medio de pago:</label>
+                  <div class="col-12 pb-3">
+                        <label for="" class="d-block">Seleccione el medio de pago:</label>
                         <select name="lstMedioDePago" id="lstMedioDePago" class="form-control">
                               <option value="mercadopago">Mercadopago</option>
                               <option value="sucursal">Pago en sucursal</option>
                         </select>
                   </div>
                   <div class="col-6">
-                        <a href="/takeaway" class=" lead" >AGREGAR MAS PRODUCTOS</a>
+                        <a href="/takeaway" class="lead" >AGREGAR MÁS PRODUCTOS</a>
                   </div>
                   <div class="col-6">
                         <button type="submit" class=" float-right btn btn-primary lead" >FINALIZAR MI COMPRA</button>

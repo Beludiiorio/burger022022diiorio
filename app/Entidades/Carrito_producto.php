@@ -17,6 +17,7 @@ class Carrito_producto extends Model
             'fk_idcarrito',
             'cantidad'
       ];
+
     protected $hidden = [
 
     ];
@@ -80,6 +81,10 @@ class Carrito_producto extends Model
       $lstRetorno = DB::select($sql);
       return $lstRetorno;
     }
+     
+
+
+
 
   public function obtenerPorCliente($idcliente)
   {
@@ -139,5 +144,6 @@ class Carrito_producto extends Model
       $lstRetorno = DB::select($sql);
       return $lstRetorno;
   }
+
 }
 ?>

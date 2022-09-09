@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Entidades\Sucursal;
 use Illuminate\Http\Request;
 use App\Entidades\Cliente;
@@ -20,10 +19,10 @@ class ControladorWebCambiarDatos extends Controller
         $cliente->obtenerPorId(Session::get('idcliente'));
 
         return view("web.cambiar-datos", compact('pg', 'aSucursales', 'cliente'));
+    
     }
 
     public function editar(Request $request){
-
         $cliente = new Cliente();
         $cliente->obtenerPorId(Session::get('idcliente'));
        
@@ -36,21 +35,23 @@ class ControladorWebCambiarDatos extends Controller
         $celular = $request->input('txtCelular');
         $clave = $request->input('txtClave');
         
+       
         $sucursal = new Sucursal();
         $aSucursales = $sucursal->obtenerTodos();
-
+        
         $cliente = new Cliente();
-        $cliente->obtenerPorId(Session::get('idcliente'));
-
         $cliente->nombre = $nombre;
         $cliente->apellido = $apellido;
         $cliente->correo = $correo;
         $cliente->dni = $dni;
         $cliente->celular = $celular;
         $cliente->guardar();
-        $msg["estado"] = "success";
-        $msg["msg"] = "Cambiado correctamente";
-
-        return view("web.mi-cuenta", compact('msg', 'aSucursales', 'cliente'));
+       $msg["estado"]= "success";
+       $msg["msg"]= "cambiado correctamente";
+        
+         return view ("web.mi-cuenta", compact('msg', 'aSucursales', 'pg', 'cliente'));
     }
+        
+        
+   
 }
