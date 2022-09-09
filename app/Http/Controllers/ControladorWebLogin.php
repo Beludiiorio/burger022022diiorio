@@ -28,9 +28,6 @@ class ControladorWebLogin extends Controller
 
         $cliente = new Cliente();
         $cliente->obtenerPorCorreo($correo);
-
-
-
         if($cliente->idcliente > 0 && password_verify($clave, $cliente->clave)){
 
             $cliente->obtenerPorId($cliente->idcliente);
