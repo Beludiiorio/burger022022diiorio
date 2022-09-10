@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Entidades\Sucursal;
-
 class ControladorWebRecuperarClave extends Controller
 {
     public function index()
@@ -13,6 +11,7 @@ class ControladorWebRecuperarClave extends Controller
         $aSucursales = $sucursal->obtenerTodos();
 
         return view("web.recuperar-clave", compact('pg', 'aSucursales'));
-        
+
+            
     }
 }
