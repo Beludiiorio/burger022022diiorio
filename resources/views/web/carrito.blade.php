@@ -21,7 +21,7 @@
                                           <th class="lead">Precio</th>
                                           <th class="lead">Cantidad</th>
                                           <th class="lead">Total</th>
-                                          <th></th>
+                                          <th> Eliminar</th>
                                     </tr>
                               </thead>
                               <tbody>
@@ -34,7 +34,12 @@
                                           <td>${{ number_format($item->precioproducto, 2, ",", ".")}}</td>
                                           <td>{{ $item->cantidad}}</td>
                                           <td>${{ number_format($subtotal, 2, ",", ".") }}</td>
-                                          <td><i class="fa-solid fa-ban"></i></td>
+                                          
+                                          <td>
+                                                
+                                          <a><i class="fa-solid fa-trash-can fa-lg" style="color:red"></i></a> <!--Boton de eliminar -->
+                                          </td>
+                                          
                                     </tr>
                                     <?php $total += $subtotal;?>
                                     @endforeach
@@ -60,10 +65,10 @@
                         </select>
                   </div>
                   <div class="col-6">
-                        <a href="/takeaway" class="lead" >AGREGAR MÁS PRODUCTOS</a>
+                        <a href="/takeaway" class="lead" > CONTINUAR PEDIDO </a>
                   </div>
                   <div class="col-6">
-                        <button type="submit" class=" float-right btn btn-primary lead" >FINALIZAR MI COMPRA</button>
+                        <button type="submit" class=" float-right btn btn-primary lead">FINALIZAR MI COMPRA</button>
                   </div>
             </div>
       </div>
