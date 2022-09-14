@@ -16,7 +16,7 @@
                     Tenemos la hamburguesa que se ajusta a tu estilo de vida!
                     </p>
                     <div class="btn-box">
-                      <a href="/takeaway" class="btn1">
+                      <a href="/login" class="btn1">
                         Nuevo pedido
                       </a>
                     </div>
@@ -37,7 +37,7 @@
                     Creamos las hamburguesas con los mejores ingredientes
                     </p>
                     <div class="btn-box">
-                      <a href="/takeaway" class="btn1">
+                      <a href="/login" class="btn1">
                         Nuevo pedido
                       </a>
                     </div>
@@ -58,7 +58,7 @@
                      Tenemos la solución para vos!
                     </p>
                     <div class="btn-box">
-                      <a href="/takeaway" class="btn1">
+                      <a href="/login" class="btn1">
                         Nuevo pedido
                       </a>
                     </div>
@@ -99,7 +99,7 @@
                 <h6>
                   <span>10%</span> Off
                 </h6>
-                <a href="/takeaway">
+                <a href="/login">
                   Nuevo pedido <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
@@ -168,7 +168,7 @@
                 <h6>
                   <span>15%</span> Off
                 </h6>
-                <a href="/takeaway">
+                <a href="/login">
                   Nuevo pedido <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
