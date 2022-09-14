@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Entidades\Sucursal;
 use App\Entidades\Cliente;
@@ -16,6 +17,7 @@ use MercadoPago\Payment;
 use MercadoPago\Preference;
 use MercadoPago\SDK;
 
+/* Including the constants.php file. */
 require app_path() . '/start/constants.php';
 
 class ControladorWebCarrito extends Controller
@@ -23,36 +25,35 @@ class ControladorWebCarrito extends Controller
     public function index()
     {
         $idcliente = Session::get("idcliente");
-
-        //si hay cliente logueado
-        if($idcliente > 0){
+        /* Checking if the cart is empty or not. */
+        if ($idcliente > 0) {
             $carrito = new Carrito();
-            
 
-            // si tiene carrito,
-            if($carrito->obtenerPorCliente($idcliente) != null){
+            /* Checking if the cart is empty or not. */
+            if ($carrito->obtenerPorCliente($idcliente) != null) {
                 $carrito_producto = new Carrito_producto();
-                if($carrito_producto->obtenerPorCarrito($carrito->idcarrito) != null){
-                    $idcarrito=$carrito->idcarrito;
+                if ($carrito_producto->obtenerPorCarrito($carrito->idcarrito) != null) {
+                    $idcarrito = $carrito->idcarrito;
                     $aCarrito_productos = $carrito_producto->obtenerPorCarrito($idcarrito);
-                    } else {
-                        $aCarrito_productos = array();
-                    }
-            } else {
-            //si no tiene carrito asignado//mostrar alerta: "su carrito esta vacio"
-                $msg["estado"] = "info";
-                $msg["mensaje"]="Su carrito esta vacio, agregue productos desde Takeaway";
+                } else {
+                    $aCarrito_productos = array();
+                }
             }
-         
+            /* Checking if the cart is empty or not. */ 
+            else {
+                $msg["estado"] = "info";
+                $msg["mensaje"] = "Su carrito esta vacio, agregue productos desde Takeaway";
+            }
 
-        $sucursal = new Sucursal();
-        $aSucursales = $sucursal->obtenerTodos();
+            $sucursal = new Sucursal();
+            $aSucursales = $sucursal->obtenerTodos();
 
-        $pg = "carrito";
-        return view("web.carrito", compact('pg', 'carrito', 'carrito_producto', 'aSucursales', 'aCarrito_productos'));
+            $pg = "carrito";
+            return view("web.carrito", compact('pg', 'carrito', 'carrito_producto', 'aSucursales', 'aCarrito_productos'));
         }
-    }
+    }  
 
+    /* A function that is called when the user clicks on the "Finalizar Pedido" button. */
     public function finalizarPedido(Request $request){
         $pedido = new Pedido();
         $pedido->fecha = Date("Y-m-d H:i:s");
@@ -122,7 +123,7 @@ class ControladorWebCarrito extends Controller
         }
 
         //Vaciar el carrito
-        $carrito_producto->eliminarPorCliente(Session::get("idcliente"));
+        // $carrito_producto->eliminarPorCliente(Session::get("idcliente"));
 
         $carrito = new Carrito();
         $carrito->eliminarPorCliente(Session::get("idcliente"));
@@ -130,5 +131,27 @@ class ControladorWebCarrito extends Controller
         return redirect("/mi-cuenta");
     }
 
+    public function eliminar(Request $request)
+    {   
+        $carrito_producto = new Carrito_producto();
+        $carrito_producto->eliminar(Session::get("idproducto"));
+         
+        $carrito = new Carrito_producto();
+        $carrito->eliminar(Session::get("idproducto"));
+
+        return redirect("/carrito"); 
+
+        
+             
+    //         else {
+    //             $codigo = "ELIMINARPROFESIONAL";
+    //             $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
+    //         }
+    //         echo json_encode($aResultado);
+    //     } else {
+    //         return redirect('admin/login');
+    //     }
+    // }   
+    }
 }
 ?>

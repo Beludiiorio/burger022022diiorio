@@ -4,7 +4,7 @@
 <script>
     globalId = '<?php echo isset($carrito_producto->idcarrito_producto) && $carrito_producto->idcarrito_producto > 0 ? $carrito_producto->idcarrito_producto : 0; ?>';
     <?php $globalId = isset($carrito_producto->idcarrito_producto) ? $carrito_producto->idcarrito_producto : "0";?>
-</script>
+</script> 
 @endsection
 <section class="food_section layout_padding">
       
@@ -27,8 +27,8 @@
                                           <th class="lead">Nombre</th>
                                           <th class="lead">Precio</th>
                                           <th class="lead">Cantidad</th>
-                                          <th class="lead">Total item</th>                                   
-                                          <th class="lead">Eliminar Producto</th>                                    
+                                          <th class="lead">Total</th>                                   
+                                          <th class="lead">Eliminar</th>                                    
                                     </tr>
                               </thead>
 
@@ -47,7 +47,7 @@
                                                       <a title="Eliminar" href="#" class="btn btn-danger" aria-hidden="true" onclick="javascript: $('#mdlEliminar').modal('toggle');">Eliminar</a>
                                                       
                                                 </td>
-                                                <?php print_r($item);?>
+                                                 
 
 
 
@@ -66,7 +66,7 @@
                               </tbody>                        
                         </table>          
                   <div class="col-12">
-                        <label for="" class="d-block">Sucursal donde retirar el pedido:</label>
+                        <label for="" class="d-block">Seleccione la sucursal donde retirar el pedido:</label>
                         <select name="lstSucursal" id="lstSucursal" class="form-control">
                               @foreach ($aSucursales as $sucursal)
                                     <option value="{{ $sucursal -> idsucursal }}">{{ $sucursal -> nombre}} </option>                        
@@ -74,7 +74,7 @@
                         </select>
                   </div>
                   <div class="col-12">
-                        <label for="" class="d-block">Selecciona el medio de pago:</label>
+                        <label for="" class="d-block">Seleccione el medio de pago:</label>
                         <select name="lstMedioDePago" id="lstMedioDePago" class="form-control">
                               <option value="mercadopago">Mercadopago</option>
                               <option value="sucursal">Pago en sucursal</option>
