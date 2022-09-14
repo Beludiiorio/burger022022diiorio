@@ -87,6 +87,7 @@
                 <a href="/logout" class="order_online">
                   Salir
                   <i class="fa fa-user" aria-hidden="true"></i>
+                 
                 </a>
                 @else
                 <a href="/login" class="order_online">

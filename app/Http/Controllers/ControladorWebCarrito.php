@@ -10,6 +10,7 @@ use App\Entidades\Pedido;
 use App\Entidades\Carrito_producto;
 use Session;
 
+//Librerias de MercadoPago: (clases)
 use MercadoPago\Item;
 use MercadoPago\MerchantOrder;
 use MercadoPago\Payer;
@@ -70,18 +71,18 @@ class ControladorWebCarrito extends Controller
         $pedido->fk_idsucursal = $request->input('lstSucursal');
         $pedido->fk_idcliente = Session::get("idcliente");
 
-        if($medioDePago == "sucursal"){
+        if($medioDePago == "sucursal"){ //Si pago en sucursal va a pedido pendiente
             $pedido->fk_idestado = PEDIDO_PENDIENTE;
             $pedido->insertar();
         } else {
             $pedido->fk_idestado = PEDIDO_PENDIENTEDEPAGO;
             $pedido->insertar();
 
-            //Abona por MP
-            $access_token = "";
+            //Abona por MercadoPago:
+            $access_token = ""; //Lo dejamos vacio porque necesitamos que este preparado
             SDK::setClientId(config("payment-methods.mercadopago.client"));
             SDK::setClientSecret(config("payment-methods.mercadopago.secret"));
-            SDK::setAccessToken($access_token); //Es el token de la cuenta de MP donde se deposita el dinero
+            SDK::setAccessToken($access_token); //Es el token de la cuenta de MP donde se deposita el dinero, como el cbu. 
 
             //Armado del producto ‘item’
             $item = new Item();
@@ -89,37 +90,38 @@ class ControladorWebCarrito extends Controller
             $item->title = "Burger SRL";
             $item->category_id = "products";
             $item->quantity = 1;
-            $item->unit_price = $pedido->total;
-            $item->currency_id = "ARS"; //COP
+            $item->unit_price = $pedido->total; //El precio, que lo traemos del total
+            $item->currency_id = "ARS"; //COP (la moneda del país)
 
             $preference = new Preference();
             $preference->items = array($item);
 
-            //Datos del comprador
+            //Datos del comprador:
+            //Preparamos la pasarela de pago
             $payer = new Payer();
-            $cliente = new Cliente();
+            $cliente = new Cliente(); //Obtenemos los datos de la BBDD
             $cliente->obtenerPorId(Session::get("idcliente"));
             $payer->name = $cliente->nombre;
             $payer->surname = $cliente->apellido;
             $payer->email = $cliente->correo;
             $payer->date_created = date('Y-m-d H:m:s');
             $payer->identification = array(
-                "type" => "DNI", //CC
+                "type" => "DNI", //Cedula de Ciudadania en Colombia
                 "number" => $cliente->dni,
             );
             $preference->payer = $payer;
 
-            //URL de configuración para indicarle a MP
+            //URL de configuración para indicarle a MP: (rutas)
             $preference->back_urls = [
-                "success" => "http://127.0.0.1:8000/mercado-pago/aprobado/" . $cliente->idcliente,
-                "pending" => "http://127.0.0.1:8000/mercado-pago/pendiente/" . $cliente->idcliente,
-                "failure" => "http://127.0.0.1:8000/mercado-pago/error/" . $cliente->idcliente,
+                "success" => "http://127.0.0.1:8000/mercado-pago/aprobado/" . $cliente->idcliente, //Vamos a enviar e idcliente porque el pedido se inserta despues 
+                "pending" => "http://127.0.0.1:8000/mercado-pago/pendiente/" . $cliente->idcliente, //Pago pendiente
+                "failure" => "http://127.0.0.1:8000/mercado-pago/error/" . $cliente->idcliente, //Si dió error
             ];
 
             $preference->payment_methods = array("installments" => 6);
             $preference->auto_return = "all";
             $preference->notification_url = '';
-            $preference->save(); //Ejecuta la transacción
+            $preference->save(); //Ejecuta la transacción y lo envia a la pasarela de pago
         }
 
         //Vaciar el carrito
