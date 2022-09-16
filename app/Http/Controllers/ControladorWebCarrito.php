@@ -74,10 +74,11 @@ class ControladorWebCarrito extends Controller
         if($medioDePago == "sucursal"){ //Si pago en sucursal va a pedido pendiente
             $pedido->fk_idestado = PEDIDO_PENDIENTE;
             $pedido->insertar();
+            return redirect("/mi-cuenta");
         } else {
             $pedido->fk_idestado = PEDIDO_PENDIENTEDEPAGO;
             $pedido->insertar();
-
+            return redirect("/mi-cuenta");
             //Abona por MercadoPago:
             $access_token = ""; //Lo dejamos vacio porque necesitamos que este preparado
             SDK::setClientId(config("payment-methods.mercadopago.client"));
