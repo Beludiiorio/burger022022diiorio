@@ -82,10 +82,6 @@ class Carrito_producto extends Model
       return $lstRetorno;
     }
      
-
-
-
-
   public function obtenerPorCliente($idcliente)
   {
     $sql = "SELECT
