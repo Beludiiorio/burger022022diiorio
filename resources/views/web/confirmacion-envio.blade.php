@@ -6,7 +6,7 @@
     <div class="container offset-sm-3">
       <div class="heading_container">
         <h2 class="pb-4 text-white">
-          Imperial Burger's agradece tu mensaje
+          Imperial Burger's agradece su mensaje
         </h2>
       </div>
       <div class="row">
