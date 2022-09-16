@@ -10,7 +10,7 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                    La comida es mejor cuando comemosjuntos 
+                    La comida es mejor cuando comemos juntos 
                     </h1>
                     <p>
                     Tenemos la hamburguesa que se ajusta a tu estilo de vida!
