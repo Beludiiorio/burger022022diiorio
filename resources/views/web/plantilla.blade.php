@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="web/images/favicon.png" type="">
 
-  <title>La Mansión De La Hamburguesa</title>
+  <title> Imperial burger's</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -42,7 +42,7 @@
     <div class="hero_area">
 
       <div class="bg-box">
-        <img src="web/images/hero-bg.jpg" alt="">
+        <img src="web/images/burger4.jpg" alt="">
       </div>
 
       <!-- header section strats -->
@@ -51,7 +51,7 @@
           <nav class="navbar navbar-expand-lg custom_nav-container ">
             <a class="navbar-brand" href="/nosotros">
               <span>
-             La Monumental Burger
+              Imperial burger's
               </span>
             </a>
 

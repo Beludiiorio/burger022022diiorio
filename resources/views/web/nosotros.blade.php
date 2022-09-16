@@ -15,11 +15,11 @@
           <div class="detail-box">
             <div class="heading_container">
               <h2>
-              La Monumental Burger
+              Imperial burger's
               </h2>
             </div>
             <p>
-            La Monumental Burger es una franquicia de restaurantes de comida rápida Argentina con sedes en CABA.​ Sus principales productos son las distintas hamburguesas para todos los gustos, las papas fritas con sus distintas versiones y las bebidas.
+            Imperial burger's es una franquicia de restaurantes de comida rápida Argentina con sedes en CABA.​ Sus principales productos son las distintas hamburguesas para todos los gustos, las papas fritas con sus distintas versiones y las bebidas.
             </p>
             <a href="">
               Leer más
