@@ -44,19 +44,12 @@
                                                       <td>${{ number_format ($subtotal, 2, ",","." ) }}</td>                                                            
                                                 <td>
                                                      
-                                                      <a title="Eliminar" href="#" class="btn btn-danger" aria-hidden="true" onclick="javascript: $('#mdlEliminar').modal('toggle');">Eliminar</a>
-                                                      
-                                                </td>
-                                                 
-
-
-
-
-                                                                  {{-- <td><a href="carrito/ {{ $item -> idcarrito_producto }}" class="btn btn-danger">Eliminar</a></td>  --}}
-                                                            
-                                                                  
-                                                                                                   
-                                                                  {{-- eliminar por url porque ahora me esta llamando al boton finalizar, se tiene que diferenciar del eliminar producto. --}}                     
+                                                
+                                                
+                                                 <a href='/carrito/eliminar/{{$item->idcarrito_producto}}' class="btn btn-danger"> <i class= "fa-solid fa-trash"></i> 
+                                                </a>
+                                                    </td>        
+                                                                                    
                                                 </tr>   
                                                                                                           
                                           <?php $total += $subtotal; ?>
