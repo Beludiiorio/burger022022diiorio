@@ -11,7 +11,7 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <link rel="shortcut icon" href="web/images/favicon.png" type="">
+  <link rel="shortcut icon" href="web/images/imperial.png" type="">
 
   <title> Imperial burger's</title>
 
