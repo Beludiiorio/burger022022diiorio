@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="img-box">
-            <img src="web/images/about-img.png" alt="">
+            <img src="web/images/burgertasty.png" alt="">
           </div>
         </div>
         <div class="col-md-6">
