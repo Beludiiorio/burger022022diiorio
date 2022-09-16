@@ -11,15 +11,21 @@
       </div>
       <div class="row">
         <div class="col-md-6 text-white">
-          <p>¡Nos comunicaremos con usted a la brevedad!</p>
+          <p class="text-center">¡Nos comunicaremos con usted a la brevedad!</p>
         </div>
         <section>
+
             <div>
-                        <img src="web/images/postulacion1.png" class="text-center img-fluid ">  
+                  <svg role="img" aria-label="Success:"></svg>
+                  
+                        <img src="web/images/burgercontacto.png">  
             </div>
       </section>
       </div>
     </div>
+    
+    
+      
   </section>
   <!-- end book section -->
 

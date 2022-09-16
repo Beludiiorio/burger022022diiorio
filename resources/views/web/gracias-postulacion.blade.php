@@ -12,11 +12,11 @@
       </div>
       <div class="row">
         <div class="col-md-6 text-white">
-          <p>¡Serán analizados y te contactaremos a la brevedad!</p>
+          <p class="text-center">¡Serán analizados y te contactaremos a la brevedad!</p>
         </div>
         <section>
             <div>
-                        <img src="web/images/postulacion1.png" class="text-center img-fluid ">  
+                <img src="web/images/postulacion1.png" class="text-center img-fluid ">  
             </div>
       </section>
       </div>
