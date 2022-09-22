@@ -5,87 +5,108 @@ namespace App\Entidades;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
-class Carrito extends Model
-{
+class Carrito extends Model{
+
       protected $table = 'carritos';
       public $timestamps = false;
-
+  
       protected $fillable = [
-            'idcarrito',
-            'fk_idcliente'
+          'idcarrito',
+          'fk_idcliente'
+      ];
+  
+      protected $hidden = [  
       ];
 
-    protected $hidden = [
-
-    ];
-
-      public function insertar()
+    public function guardar() {
+        $sql = "UPDATE $this->table SET
+            idcarrito='$this->idcarrito',
+            fk_idcliente='$this->fk_idcliente',           
+            WHERE idcarrito=?";
+        $affected = DB::update($sql, [$this->idcarrito]);
+    }
+    
+    public function obtenerPorId($idcarrito)
     {
-        $sql = "INSERT INTO $this->table (
-                  fk_idcliente
-            ) VALUES (?);";
+        $sql = "SELECT
+                idcarrito,
+                fk_idcliente               
+                FROM carritos WHERE idcarrito = $idcarrito";
+        $lstRetorno = DB::select($sql);
+
+        if (count($lstRetorno) > 0) {
+            $this->idcarrito = $lstRetorno[0]->idcarrito;
+            $this->fk_idcliente = $lstRetorno[0]->fk_idcliente;                     
+            return $this;
+        }
+        return null;
+    }
+
+    public function obtenerTodos()
+    {
+        $sql = "SELECT
+                  idcarrito,
+                  fk_idcliente               
+                FROM carritos A ORDER BY idcarrito";
+        $lstRetorno = DB::select($sql);
+        return $lstRetorno;
+    }
+ 
+    public function obtenerPorCliente($idcliente){
+        $sql = "SELECT
+                   idcarrito,
+                   fk_idcliente
+               FROM carritos WHERE fk_idcliente = $idcliente";
+       $lstRetorno = DB::select($sql);
+   
+     /* Checking if the query returns any data. If it does, it will return the data. If it doesn't, it
+     will return null. */
+       if (count($lstRetorno) > 0) {
+           $this->idcarrito = $lstRetorno[0]->idcarrito;
+           $this->fk_idcliente = $lstRetorno[0]->fk_idcliente;
+           return $this;
+       }
+       return null;
+     }
+
+     public function insertar(){
+        $sql = "INSERT INTO $this->table (            
+            idcarrito,
+            fk_idcliente
+            ) VALUES (?,?)";
         $result = DB::insert($sql, [
-            $this->fk_idcliente
+            $this->idcarrito,
+            $this->fk_idcliente,             
         ]);
         return $this->idcarrito = DB::getPdo()->lastInsertId();
     }
-    public function guardar() {
-      $sql = "UPDATE $this->table SET
-          fk_idcliente=$this->fk_idcliente
-          WHERE idcarrito=?";
-      $affected = DB::update($sql, [$this->idcarrito]);
-  }
-
-   public function obtenerPorId($idcarrito)
-  {
-      $sql = "SELECT
-              idcarrito,
-              fk_idcliente
-              FROM $this->table WHERE idcarrito = $idcarrito";
-      $lstRetorno = DB::select($sql);
-
-      if (count($lstRetorno) > 0) {
-          $this->idcarrito = $lstRetorno[0]->idcarrito;
-          $this->fk_idcliente = $lstRetorno[0]->fk_idcliente;
-          return $this;
-      }
-      return null;
-  }
-
-   public function eliminar()
-  {
-      $sql = "DELETE FROM $this->table WHERE idcarrito=?";
-      $affected = DB::delete($sql, [$this->idcarrito]);
-  }
-   public function eliminarPorCliente($idCliente)
-  {
-      $sql = "DELETE FROM $this->table WHERE idcliente=?";
-      $affected = DB::delete($sql, [$idCliente]);
-  }
-
-   public function obtenerTodos()
-  {
-      $sql = "SELECT
-              idcarrito,
-              fk_idcliente
-              FROM $this->table ORDER BY idcarrito";
-      $lstRetorno = DB::select($sql);
-      return $lstRetorno;
-  }
-  
-   public function obtenerPorCliente($idcliente){
-     $sql = "SELECT
-                idcarrito,
-                fk_idcliente
-            FROM carritos WHERE fk_idcliente = $idcliente";
-    $lstRetorno = DB::select($sql);
-
-    if (count($lstRetorno) > 0) {
-        $this->idcarrito = $lstRetorno[0]->idcarrito;
-        $this->fk_idcliente = $lstRetorno[0]->fk_idcliente;
-        return $this;
+    
+    public function eliminar()
+    {
+        $sql = "DELETE FROM pedidos WHERE idcarrito=?";
+        $affected = DB::delete($sql, [$this->idcarrito]);
     }
-    return null;
-  }
+
+    public function obtenerProductos()
+    {
+        $sql = "SELECT
+                idproducto,
+                nombre,
+                cantidad,
+                precio,
+                imagen,
+                fk_idcategoria,
+                descripcion
+                FROM $this->table ORDER BY idproducto";
+        $lstRetorno = DB::select($sql);
+        return $lstRetorno;
+    }
+
+    public function eliminarPorCliente($idCliente)
+    {
+        $sql = "DELETE FROM $this->table WHERE idcliente=?";
+        $affected = DB::delete($sql, [$idCliente]);
+    }
+    
+ 
 }
-?>

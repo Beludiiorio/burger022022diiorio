@@ -115,6 +115,7 @@ class Pedido extends Model{
             return $this;
         }
         return null;
+        
     }
     public function obtenerFiltrado()
     {
@@ -187,6 +188,7 @@ class Pedido extends Model{
             WHERE fk_idcliente=?";
         $affected = DB::update($sql, [$idCliente]);
     }
+
     public function pendiente($idCliente) 
     {
         $sql = "UPDATE pedidos SET
@@ -194,6 +196,7 @@ class Pedido extends Model{
             WHERE fk_idcliente=?";
         $affected = DB::update($sql, [$idCliente]);
     }
+
     public function error($idCliente) 
     {
         $sql = "UPDATE pedidos SET

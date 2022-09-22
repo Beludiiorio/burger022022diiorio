@@ -12,12 +12,14 @@ class ControladorWebMercadoPago extends Controller
       $pedido->aprobar($idCliente);
       return redirect("/mi-cuenta");
     }
+    
     public function pendiente($idCliente)
     {
       $pedido = new Pedido();
       $pedido->pendiente($idCliente);
       return redirect("/mi-cuenta");
     }
+
     public function error($idCliente)
     {
       $pedido = new Pedido();

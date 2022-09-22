@@ -41,20 +41,14 @@
                                                       <td>{{$item->nombreproducto}}</td>
                                                       <td>${{$item->precioproducto}}</td>
                                                       <td>{{$item->cantidad}}</td>
-                                                      <td>${{ number_format ($subtotal, 2, ",","." ) }}</td>                                                            
-                                                <td>
-                                                     
-                                                
-                                                
-                                                 <a href='/carrito/eliminar/{{$item->idcarrito_producto}}' class="btn btn-danger"> <i class= "fa-solid fa-trash"></i> 
-                                                </a>
-                                                    </td>        
-                                                                                    
+                                                      <td>${{ number_format ($subtotal, 2, ",","." ) }}</td>
+                                                      <td><a href="/carrito/eliminarProducto/{{$item->idcarrito_producto}}" type="button" class="btn btn-danger"> <i class= "fa-solid fa-trash"></i></a></td>                                                               
                                                 </tr>   
                                                                                                           
                                           <?php $total += $subtotal; ?>
                                           
                                     @endforeach
+                                    
                                     
                               </tbody>                        
                         </table>          

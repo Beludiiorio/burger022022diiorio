@@ -10,7 +10,6 @@ use App\Entidades\Pedido;
 use App\Entidades\Carrito_producto;
 use Session;
 
-//Librerias de MercadoPago: (clases)
 use MercadoPago\Item;
 use MercadoPago\MerchantOrder;
 use MercadoPago\Payer;
@@ -71,90 +70,88 @@ class ControladorWebCarrito extends Controller
         $pedido->fk_idsucursal = $request->input('lstSucursal');
         $pedido->fk_idcliente = Session::get("idcliente");
 
-        if($medioDePago == "sucursal"){ //Si pago en sucursal va a pedido pendiente
+        if($medioDePago == "sucursal"){
             $pedido->fk_idestado = PEDIDO_PENDIENTE;
             $pedido->insertar();
-            return redirect("/mi-cuenta");
+            return redirect("/mi-cuenta");            
+
         } else {
             $pedido->fk_idestado = PEDIDO_PENDIENTEDEPAGO;
             $pedido->insertar();
             return redirect("/mi-cuenta");
-            //Abona por MercadoPago:
-            $access_token = ""; //Lo dejamos vacio porque necesitamos que este preparado
+            
+            //Mercadopago
+            $access_token = "";
             SDK::setClientId(config("payment-methods.mercadopago.client"));
             SDK::setClientSecret(config("payment-methods.mercadopago.secret"));
-            SDK::setAccessToken($access_token); //Es el token de la cuenta de MP donde se deposita el dinero, como el cbu. 
+           /* Setting the access token. */
+            SDK::setAccessToken($access_token); 
 
-            //Armado del producto ‘item’
+            /* Creating a new item. */
             $item = new Item();
             $item->id = "1234";
             $item->title = "Burger SRL";
             $item->category_id = "products";
             $item->quantity = 1;
-            $item->unit_price = $pedido->total; //El precio, que lo traemos del total
-            $item->currency_id = "ARS"; //COP (la moneda del país)
+            $item->unit_price = $pedido->total;
+            $item->currency_id = "ARS";
 
             $preference = new Preference();
             $preference->items = array($item);
 
-            //Datos del comprador:
-            //Preparamos la pasarela de pago
+            
+           /* Creating a new payer and setting the payer's name, surname, email, date created and
+           identification. */
             $payer = new Payer();
-            $cliente = new Cliente(); //Obtenemos los datos de la BBDD
+            $cliente = new Cliente();
             $cliente->obtenerPorId(Session::get("idcliente"));
             $payer->name = $cliente->nombre;
             $payer->surname = $cliente->apellido;
             $payer->email = $cliente->correo;
             $payer->date_created = date('Y-m-d H:m:s');
             $payer->identification = array(
-                "type" => "DNI", //Cedula de Ciudadania en Colombia
+                "type" => "DNI",
                 "number" => $cliente->dni,
             );
             $preference->payer = $payer;
 
-            //URL de configuración para indicarle a MP: (rutas)
+           /* Setting the back urls. */
             $preference->back_urls = [
-                "success" => "http://127.0.0.1:8000/mercado-pago/aprobado/" . $cliente->idcliente, //Vamos a enviar e idcliente porque el pedido se inserta despues 
-                "pending" => "http://127.0.0.1:8000/mercado-pago/pendiente/" . $cliente->idcliente, //Pago pendiente
-                "failure" => "http://127.0.0.1:8000/mercado-pago/error/" . $cliente->idcliente, //Si dió error
+                "success" => "http://127.0.0.1:8000/mercado-pago/aprobado/" . $cliente->idcliente,
+                "pending" => "http://127.0.0.1:8000/mercado-pago/pendiente/" . $cliente->idcliente,
+                "failure" => "http://127.0.0.1:8000/mercado-pago/error/" . $cliente->idcliente,
             ];
 
             $preference->payment_methods = array("installments" => 6);
             $preference->auto_return = "all";
             $preference->notification_url = '';
-            $preference->save(); //Ejecuta la transacción y lo envia a la pasarela de pago
+            /* Saving the preference. */
+            $preference->save();
         }
 
-        //Vaciar el carrito
-        // $carrito_producto->eliminarPorCliente(Session::get("idcliente"));
+        /* Deleting the cart and redirecting to the account page. */
+        $carrito_producto->eliminarPorCliente(Session::get("idcliente"));
 
         $carrito = new Carrito();
         $carrito->eliminarPorCliente(Session::get("idcliente"));
-
+ 
         return redirect("/mi-cuenta");
-    }
-
-    public function eliminar(Request $request)
-    {   
-        $carrito_producto = new Carrito_producto();
-        $carrito_producto->eliminar(Session::get("idproducto"));
+     }
+     
+     public function eliminar()
+     {
+         $idcarrito_producto = new Carrito();
+         $idcarrito_producto->eliminar(Session::get("idcarrito_producto"));
+         return redirect("/takeaway");
+     }
+     public function eliminarProducto()
+     {
          
-        $carrito = new Carrito_producto();
-        $carrito->eliminar(Session::get("idproducto"));
-
-        return redirect("/carrito"); 
-
-        
+             $carrito_producto= new Carrito_producto();
+             $carrito_producto->obtenerPorId('idcarrito_producto');
+             $carrito_producto->eliminar();
              
-    //         else {
-    //             $codigo = "ELIMINARPROFESIONAL";
-    //             $aResultado["err"] = "No tiene pemisos para la operaci&oacute;n.";
-    //         }
-    //         echo json_encode($aResultado);
-    //     } else {
-    //         return redirect('admin/login');
-    //     }
-    // }   
+             return redirect('carrito');
+      }  
     }
-}
 ?>

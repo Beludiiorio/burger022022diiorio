@@ -66,7 +66,7 @@ class Carrito_producto extends Model
   }
 
    public function obtenerPorCarrito($idcarrito)
-  {  //tengo q seleccionar todos los carritos donde el fk_idcarrito sea igual al $idcarrito.
+  {  
       $sql = "SELECT
                 A.idcarrito_producto,
                 A.fk_idproducto,
@@ -112,8 +112,6 @@ class Carrito_producto extends Model
     }
     return $aResultado;
 }
- 
-
 
    public function eliminar()
   {
@@ -140,6 +138,5 @@ class Carrito_producto extends Model
       $lstRetorno = DB::select($sql);
       return $lstRetorno;
   }
-
 }
 ?>
