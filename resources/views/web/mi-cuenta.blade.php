@@ -51,7 +51,7 @@
                                                 </thead>
                                                 
                                                 <tbody>
-                                                      
+                                                
                                                      @foreach($aPedidos as $pedido)
                                                       <tr>
                                                             <td>{{$pedido->idpedido}}</td>
