@@ -21,7 +21,7 @@
             <p>
             Imperial burger's es una franquicia de restaurantes de comida rápida Argentina con sedes en CABA.​ Sus principales productos son las distintas hamburguesas para todos los gustos, las papas fritas con sus distintas versiones y las bebidas.
             </p>
-            <a href="">
+            <a href="/">
               Leer más
             </a>
           </div>
