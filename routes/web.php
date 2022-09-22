@@ -1,6 +1,5 @@
 <?php
- //use Carbon\Carbon; 
-/*
+ /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -11,8 +10,7 @@
 |
  */
 
-/*Route::get('/time' , function(){$date =new Carbon;echo $date ; } );*/
-
+use App\Http\Controllers\ControladorEliminarProducto;
 
 Route::group(array('domain' => '127.0.0.1'), function () {
 
@@ -20,6 +18,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/takeaway', 'ControladorWebTakeaway@index');
     Route::post('/takeaway', 'ControladorWebTakeaway@agregarAlCarrito');
     Route::get('/nosotros', 'ControladorWebNosotros@index');
+   /* A route that is being called when the user is redirected to the `/gracias-postulacion` page. */
     Route::get('/gracias-postulacion', 'ControladorWebGraciasPostulacion@index');
     Route::post('/nosotros', 'ControladorWebNosotros@enviar');
     Route::get('/contacto', 'ControladorWebContacto@index');
@@ -29,26 +28,23 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::post('/mi-cuenta', 'ControladorWebMiCuenta@editar');
     Route::get('/login', 'ControladorWebLogin@index');
     Route::post('/login', 'ControladorWebLogin@ingresar');
-    Route::get('/recuperar-clave', 'ControladorWebRecuperarClave@index');
-    Route::post('/recuperar-clave', 'ControladorWebRecuperarClave@enviar');
+    Route::post('/bienvenido', 'ControladorWebBienvenido@index');
     Route::get('/nuevo-registro', 'ControladorWebNuevoRegistro@index');
     Route::post('/nuevo-registro', 'ControladorWebNuevoRegistro@enviar');
+    Route::get('/recuperar-clave', 'ControladorWebRecuperarClave@index');
+    Route::post('/recuperar-clave', 'ControladorWebRecuperarClave@enviar');      
+    Route::get('/cambiar-datos', 'ControladorWebCambiarDatos@index');
+    Route::post('/cambiar-datos', 'ControladorWebCambiarDatos@editar');
     Route::get('/cambiar-clave', 'ControladorWebCambiarClave@index');
     Route::post('/cambiar-clave', 'ControladorWebCambiarClave@guardar');
     Route::get('/logout', 'ControladorWebLogout@logout');
+    Route::get('/mercado-pago/aprobado/{idCliente}', 'ControladorWebMercadopago@aprobar');
+    Route::get('/mercado-pago/pediente/{idCliente}', 'ControladorWebMercadopago@pendiente');
+    Route::get('/mercado-pago/error/{idCliente}', 'ControladorWebMercadopago@error');
     Route::get('/carrito', 'ControladorWebCarrito@index');
-    Route::post('/carrito', 'ControladorWebCarrito@finalizarPedido');
-    Route::get('/cambiar-datos', 'ControladorWebCambiarDatos@index');
-    Route::post('/cambiar-datos', 'ControladorWebCambiarDatos@editar');
-    Route::get('/mercado-pago/aprobado/{idCliente}', 'ControladorWebMercadoPago@aprobar');
-    Route::get('/mercado-pago/pendiente/{idCliente}', 'ControladorWebMercadoPago@pendiente');
-    Route::get('/mercado-pago/error/{idCliente}', 'ControladorWebMercadoPago@error');
-
- 
-
-    Route::get('/admin', 'ControladorHome@index'); //rutas de tipo url
-    Route::post('/admin/patente/nuevo', 'ControladorPatente@guardar'); //Cuando se envia un formulario
-
+    Route::post('/carrito', 'ControladorWebCarrito@finalizarPedido');    
+    Route::get('/carrito/eliminarProducto/{id}', 'ControladorWebCarrito@eliminarProducto');
+    
 /* --------------------------------------------- */
 /* CONTROLADOR LOGIN                           */
 /* --------------------------------------------- */
@@ -109,9 +105,7 @@ Route::group(array('domain' => '127.0.0.1'), function () {
     Route::get('/admin/sistema/menu/cargarGrilla', 'ControladorMenu@cargarGrilla')->name('menu.cargarGrilla');
     Route::get('/admin/sistema/menu/eliminar', 'ControladorMenu@eliminar');
     Route::get('/admin/sistema/menu/{id}', 'ControladorMenu@editar');
-    Route::post('/admin/sistema/menu/{id}', 'ControladorMenu@guardar');
-
-});
+    Route::post('/admin/sistema/menu/{id}', 'ControladorMenu@guardar');});
 
 /* --------------------------------------------- */
 /* CONTROLADOR PATENTES                          */
@@ -124,7 +118,6 @@ Route::get('/admin/patente/eliminar', 'ControladorPatente@eliminar');
 Route::get('/admin/patente/nuevo/{id}', 'ControladorPatente@editar');
 Route::post('/admin/patente/nuevo/{id}', 'ControladorPatente@guardar');
 
-
 /* --------------------------------------------- */
 /* CONTROLADOR CLIENTES                          */
 /* --------------------------------------------- */
@@ -135,8 +128,6 @@ Route::get('/admin/clientes/CargarGrilla', 'ControladorCliente@cargarGrilla')->n
 Route::get('/admin/cliente/eliminar', 'ControladorCliente@eliminar');
 Route::get('/admin/cliente/{id}', 'ControladorCliente@editar');
 Route::post('/admin/cliente/{id}', 'ControladorCliente@guardar');
-
-
 
 /* --------------------------------------------- */
 /* CONTROLADOR POSTULACION                          */
@@ -149,9 +140,6 @@ Route::get('/admin/postulacion/eliminar', 'ControladorPostulacion@eliminar');
 Route::get('/admin/postulacion/{id}', 'ControladorPostulacion@editar');
 Route::post('/admin/postulacion/{id}', 'ControladorPostulacion@guardar');
 
-
-
-
 /* --------------------------------------------- */
 /* CONTROLADOR PEDIDOS                      */
 /* --------------------------------------------- */
@@ -162,10 +150,6 @@ Route::get('/admin/pedidos/CargarGrilla', 'ControladorPedido@cargarGrilla')->nam
 Route::get('/admin/pedido/eliminar', 'ControladorPedido@eliminar');
 Route::get('/admin/pedido/{id}', 'ControladorPedido@editar');
 Route::post('/admin/pedido/{id}', 'ControladorPedido@guardar');
-
-
-
-
 
 /* --------------------------------------------- */
 /* CONTROLADOR CATEGORIAS                          */
@@ -178,10 +162,6 @@ Route::get('/admin/categoria/eliminar', 'ControladorCategoria@eliminar');
 Route::get('/admin/categoria/{id}', 'ControladorCategoria@editar');
 Route::post('/admin/categoria/{id}', 'ControladorCategoria@guardar');
 
-
-
-
-
 /* --------------------------------------------- */
 /* CONTROLADOR PRODUCTOS                          */
 /* --------------------------------------------- */
@@ -193,11 +173,6 @@ Route::get('/admin/producto/eliminar', 'ControladorProducto@eliminar');
 Route::get('/admin/producto/{id}', 'ControladorProducto@editar');
 Route::post('/admin/producto/{id}', 'ControladorProducto@guardar');
 
-
-
-
-
-
 /* --------------------------------------------- */
 /* CONTROLADOR ESTADOS                          */
 /* --------------------------------------------- */
@@ -207,11 +182,7 @@ Route::get('/admin/estados', 'ControladorEstado@index');
 Route::get('/admin/estados/CargarGrilla', 'ControladorEstado@cargarGrilla')->name('estado.cargarGrilla');
 Route::get('/admin/estado/eliminar', 'ControladorEstado@eliminar');
 Route::get('/admin/estado/{id}', 'ControladorEstado@editar');
-
-
-
-
-
+Route::post('/admin/estado/{id}', 'ControladorEstado@guardar');
 
 /* --------------------------------------------- */
 /* CONTROLADOR SUCURSALES                          */
@@ -222,3 +193,4 @@ Route::get('/admin/sucursales', 'ControladorSucursal@index');
 Route::get('/admin/sucursales/CargarGrilla', 'ControladorSucursal@cargarGrilla')->name('sucursal.cargarGrilla');
 Route::get('/admin/sucursal/eliminar', 'ControladorSucursal@eliminar');
 Route::get('/admin/sucursal/{id}', 'ControladorSucursal@editar');
+Route::post('/admin/sucursal/{id}', 'ControladorSucursal@guardar');
