@@ -2,16 +2,16 @@
 
 namespace App\Entidades;
 
-use DB;
+use DB; //Usa las credenciales que tenemos en .env 
 use Illuminate\Database\Eloquent\Model;
 
 class Carrito_producto extends Model
 {
-      protected $table = 'carrito_productos';
-      public $timestamps = false;
+      protected $table = 'carrito_productos'; //Es el nombre de la tabla y es protegido
+      public $timestamps = false; //Laravel informa en que hora se inserto un registro en la BBDD
       public $producto;
 
-      protected $fillable = [
+      protected $fillable = [ //Las distintas columnas
             'idcarrito_producto',
             'fk_idproducto',
             'fk_idcarrito',
@@ -23,13 +23,13 @@ class Carrito_producto extends Model
     ];
 
       public function insertar()
-    {
-        $sql = "INSERT INTO $this->table (
+    { //Arma la query:
+        $sql = "INSERT INTO $this->table ( 
                   fk_idproducto,
                   fk_idcarrito,
                   cantidad
-            ) VALUES (?, ?, ?);";
-        $result = DB::insert($sql, [
+            ) VALUES (?, ?, ?);"; //Cada signo ? equivale a un valor
+        $result = DB::insert($sql, [ //DB equivale a hacer un inlude once:
             $this->fk_idproducto,
             $this->fk_idcarrito,
             $this->cantidad
